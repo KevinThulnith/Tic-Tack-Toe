@@ -1,0 +1,163 @@
+body {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  overflow: hidden;
+  background: #d9d9e8;
+  font-family: system-ui;
+}
+.center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+nav {
+  top: 0px;
+  width: 100%;
+  position: fixed;
+  background: #e0ebea;
+  box-shadow: 3px 3px 5px rgba(227, 60, 60, 0.57);
+}
+nav h1 {
+  color: #8834d5;
+  font-size: 2.7rem;
+  font-weight: 470;
+  margin: 0.3rem 1.5rem;
+}
+img {
+  height: 100px;
+}
+.box,
+.wndw,
+.wndw1,
+.wndw2 {
+  width: 600px;
+  height: 560px;
+}
+.box {
+  margin-top: 4rem;
+  position: relative;
+  overflow-y: hidden;
+  overflow-x: hidden;
+  border-radius: 45px;
+  scroll-behavior: smooth;
+  box-shadow: 4px 4px 4px #b58181, -4px -4px 4px rgba(255, 237, 237, 0.64);
+}
+.box .wndw1 {
+  text-align: center;
+}
+.box .wndw1 h2 {
+  color: #7f16db;
+  font-weight: 470;
+  font-size: 3.3rem;
+}
+.box .wndw1 h2:after {
+  content: "";
+  width: 20rem;
+  height: 0.2rem;
+  position: absolute;
+  border-radius: 3rem;
+  background: #9f86b5;
+  transform: translate(-19.4rem, 4.7rem);
+}
+.box .wndw1 button {
+  display: flex;
+  height: 130px;
+  font-size: 34px;
+  background: none;
+  column-gap: 20px;
+  color: #7f16db;
+  margin: 50px auto;
+  padding: 22px 10px;
+  border-radius: 23px;
+  align-items: center;
+  border: 3px solid #7f16db;
+}
+.box .wndw {
+  height: 560px;
+  position: relative;
+}
+.box .wndw .pause {
+  top: 5%;
+  right: 5%;
+  height: 17px;
+  aspect-ratio: 1;
+  position: absolute;
+  border-radius: 50%;
+  background: #3c3ceb;
+}
+.box .wndw .pause:hover {
+  background: #827195;
+}
+.box .wndw .pad {
+  height: 450px;
+  aspect-ratio: 1;
+  border-radius: 24px;
+  padding: 10px 10px 20px 10px;
+  background: linear-gradient(320deg, rgb(38, 31, 211), #c1c2d8);
+}
+.box .wndw .pad .tile {
+  margin: 8px;
+  height: 134px;
+  position: relative;
+  border-radius: 16px;
+  aspect-ratio: 1 / 1;
+  background: #d9d9e8;
+  display: inline-block;
+  box-shadow: inset 2px 2px 4px #814646,
+    inset -4px -4px 4px rgba(192, 216, 229, 0.64);
+}
+.box .wndw .pad .tile img {
+  top: 3px;
+  left: 3px;
+  height: 130px;
+  position: absolute;
+}
+.box .wndw .pad .highlight {
+  box-shadow: none;
+  background: #5714d6;
+}
+#crl {
+  margin-left: -2px;
+}
+.wndw2 {
+  display: flex;
+  position: absolute;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  transform: translate(0, -100.3%);
+  background: rgba(193, 150, 224, 0.58);
+}
+.wndw2 header {
+  height: 8rem;
+  width: 21.6rem;
+  font-size: 4rem;
+  margin: 0.4vh 0;
+  overflow: hidden;
+  color: #ffffff;
+  line-height: 8rem;
+  text-align: center;
+  pointer-events: none;
+  border-radius: 1.7rem;
+  box-shadow: 3px 3px 4px rgba(0, 0, 0, 0.42);
+  background: linear-gradient(120deg, #d3e3ed, #6d09ac);
+}
+.wndw2 button {
+  width: 60%;
+  height: 4rem;
+  border: none;
+  margin: 1rem 0;
+  cursor: pointer;
+  color: #5800ff;
+  font-weight: 500;
+  font-size: 1.9rem;
+  font-style: oblique;
+  background: #a4d6d0;
+  border-radius: 1.4rem;
+  box-shadow: 3px 3px 4px rgba(0, 0, 0, 0.42);
+}
+.wndw2 .hide,
+.box .pop {
+  display: none;
+}
