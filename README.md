@@ -13,10 +13,13 @@ Features:
 </ul>
 
 fist page:
+
 <img src="images/photo1.png">
 
 Grid page:
+
 <img src="images/photo2.png">
 
 Message:
+
 <img src="images/photo3.png">
