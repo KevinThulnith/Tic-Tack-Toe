@@ -9,3 +9,5 @@ Features:
  <li>Detection of wins, draws, and game status</li>
  <li>Responsive design for various screen sizes</li>
 </ul>
+
+<img src="Screenshot%202024-09-05%20003459.png">
