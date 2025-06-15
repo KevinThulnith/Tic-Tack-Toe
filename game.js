@@ -1,6 +1,6 @@
 let person = [0, []];
 let bot = [0, []];
-let moves = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+let moves = new Set([1, 2, 3, 4, 5, 6, 7, 8, 9]); // Changed to Set
 let wcomb = null;
 let btt1 = document.getElementById("p1");
 let btt2 = document.getElementById("p2");
@@ -29,23 +29,22 @@ selectPlayer(btt2, 0);
 
 tiles.forEach((tile) => {
   tile.addEventListener("click", () => {
-    if (
-      moves.indexOf(eval(tile.id)) != -1 ||
-      moves.indexOf(eval(tile.id)) == 0
-    ) {
+    const tileId = parseInt(tile.id); // Store parseInt(tile.id) in a variable
+    if (moves.has(tileId)) { // Use Set.has()
       tile.innerHTML = person[0];
-      person[1].push(eval(tile.id));
-      moves.splice(moves.indexOf(eval(tile.id)), 1);
+      person[1].push(tileId);
+      moves.delete(tileId); // Use Set.delete()
       if (chechWinner(person)) {
         wlt(1);
-      } else if (!chechWinner(person) && !chechWinner(bot)) {
+      } else if (!chechWinner(bot)) { // Simplified condition
         botMove();
-        chechWinner(bot, 2);
+        chechWinner(bot); // Removed second argument
         if (chechWinner(bot)) {
           wlt(2);
         }
       }
-      if (!chechWinner(person) && !chechWinner(bot) && person[1].length > 4) {
+      // Also simplified this condition by removing !chechWinner(person)
+      if (!chechWinner(bot) && person[1].length > 4) {
         wlt(3);
       }
     }
@@ -53,13 +52,14 @@ tiles.forEach((tile) => {
 });
 
 function botMove() {
-  let index = moves[Math.floor(Math.random() * moves.length)];
+  let availableMoves = Array.from(moves); // Convert Set to Array for random selection
+  let index = availableMoves[Math.floor(Math.random() * availableMoves.length)];
   tiles.forEach((tile) => {
-    if (eval(tile.id) == index) {
+    if (parseInt(tile.id) == index) {
       tile.innerHTML = bot[0];
     }
   });
-  moves.splice(moves.indexOf(index), 1);
+  moves.delete(index); // Use Set.delete()
   bot[1].push(index);
 }
 
@@ -75,16 +75,8 @@ function chechWinner(arr) {
     [3, 5, 7],
   ];
   if (arr[1].length > 2) {
-    for (let n = 0; n < combs.length; n++) {
-      let comb = combs[n];
-      let cnt = 0;
-      for (let m = 0; m < arr[1].length; m++) {
-        let x = arr[1][m];
-        if (comb.includes(x)) {
-          cnt++;
-        }
-      }
-      if (cnt == 3) {
+    for (const comb of combs) {
+      if (comb.every(cell => arr[1].includes(cell))) {
         wcomb = comb;
         return true;
       }
@@ -97,7 +89,7 @@ function chechWinner(arr) {
 
 function highlight() {
   tiles.forEach((tile) => {
-    if (wcomb.includes(eval(tile.id))) {
+    if (wcomb.includes(parseInt(tile.id))) {
       tile.classList.add("highlight");
     }
   });
@@ -120,7 +112,7 @@ function wlt(q = 0) {
 function restart() {
   person[1] = [];
   bot[1] = [];
-  moves = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+  moves = new Set([1, 2, 3, 4, 5, 6, 7, 8, 9]); // Re-initialize as Set
   wcomb = null;
   tiles.forEach((tile) => {
     tile.classList.remove("highlight");
